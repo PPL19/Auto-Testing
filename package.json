@@ -20,6 +20,7 @@
     "mocha-puppeteer": "^0.14.0"
   },
   "dependencies": {
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "puppeteer": "^2.0.0"
   }
 }
