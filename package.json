@@ -18,5 +18,8 @@
   "homepage": "https://github.com/PPL19/Auto-Testing#readme",
   "devDependencies": {
     "mocha-puppeteer": "^0.14.0"
+  },
+  "dependencies": {
+    "mocha": "^6.2.2"
   }
 }
