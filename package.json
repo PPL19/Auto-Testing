@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PPL19/Auto-Testing/issues"
   },
-  "homepage": "https://github.com/PPL19/Auto-Testing#readme"
+  "homepage": "https://github.com/PPL19/Auto-Testing#readme",
+  "devDependencies": {
+    "mocha-puppeteer": "^0.14.0"
+  }
 }
