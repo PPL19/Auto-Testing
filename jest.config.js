@@ -1,10 +1,10 @@
 module.exports = {
     preset: "jest-puppeteer",
     globals: {
-      URL: "https://www.google.com/"
+      URL: "https://www.seleniumeasy.com/test/"
     },
-    // testMatch: [
-    //   "test.js"
-    // ],
+    testMatch: [
+      "**/test.js"
+    ],
     verbose: true
 }

@@ -1,13 +1,15 @@
 const timeout = process.env.SLOWMO ? 30000 : 10000;
 
 beforeAll(async () => {
+    jest.setTimeout(30000);
     await page.goto(URL, {waitUntil: 'domcontentloaded'});
 });
 
-describe('Title test', () => {
-    test('Testing to google title', async () => {
-        const title = await page.title();
+describe('Test header and title of the page', () => {
 
-        expect(title).toBe('Google');
+    test('Title of the page', async () => {
+        const title = await page.title();
+        expect(title).toBe('Selenium Easy - Best Demo website to practice Selenium Webdriver Online');
+        
     }, timeout);
 });
