@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/PPL19/Auto-Testing#readme",
   "devDependencies": {
-    "jest-environment-node": "^24.9.0"
+    "jest-environment-node": "^24.9.0",
+    "jest-html-reporter": "^2.7.0"
   },
   "dependencies": {
     "jest": "^24.9.0",

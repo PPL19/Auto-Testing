@@ -5,11 +5,12 @@ beforeAll(async () => {
     await page.goto(URL, {waitUntil: 'domcontentloaded'});
 });
 
-describe('Test header and title of the page', () => {
+describe('Tugas akhir PPL tercinta :*', () => {
 
-    test('Title of the page', async () => {
+    test('1. Klik simple form demo drop down and redirected to https://www.seleniumeasy.com/test/basic-first-form-demo.html ', async () => {
+        await page.click('[href="./basic-first-form-demo.html"]');
+        await page.waitForNavigation({waitUntil: "domcontentloaded"});
         const title = await page.title();
-        expect(title).toBe('Selenium Easy - Best Demo website to practice Selenium Webdriver Online');
-        
+        expect(title).toBe('Selenium Easy Demo - Simple Form to Automate using Selenium');
     }, timeout);
 });
