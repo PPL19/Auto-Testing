@@ -4,7 +4,7 @@
   "description": "Automatic Testing Script",
   "main": "testing.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,9 @@
     "url": "https://github.com/PPL19/Auto-Testing/issues"
   },
   "homepage": "https://github.com/PPL19/Auto-Testing#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest-environment-node": "^24.9.0"
+  },
   "dependencies": {
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.3.0",
