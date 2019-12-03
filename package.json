@@ -4,7 +4,16 @@
   "description": "Automatic Testing Script",
   "main": "testing.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --testResultsProcessor=jest-html-reporter"
+  },
+  "jest": {
+    "verbose": true,
+    "testResultsProcessor": "jest-html-reporter"
+  },
+  "jest-html-reporter": {
+    "pageTitle": "Auto Testing PPL",
+    "outputPath": "./src/test-report.html",
+    "includeFailureMsg": false
   },
   "repository": {
     "type": "git",
