@@ -29,9 +29,13 @@ describe('Tugas akhir PPL tercinta :*', () => {
     }, timeout);
 
     test('3. Inputing multi input field and make "NaN" result', async () => {
-        const a = "a";
-
-        
-
+        const a = "abc";
+        await page.type('#sum1', a, {delay:1});
+        await page.type('#sum2', a, {delay:1});
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(5) div.panel-body form:nth-child(3) > button.btn.btn-default:nth-child(3)');
+        await button.click();
+        const expected = "NaN";
+        const result = await page.$eval('#displayvalue', el => el.innerHTML);
+        expect(result).toBe(expected);
     }, timeout);
 });
