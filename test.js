@@ -21,7 +21,7 @@ describe('Tugas akhir PPL tercinta :*', () => {
     test('2. Inputing single input field and comparing the result', async () => {
         const inputer = "Hallo";
         await page.waitForSelector("#get-input");
-        await page.type('#user-message', inputer, {delay:5})
+        await page.type('#user-message', inputer)
         const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body form:nth-child(3) > button.btn.btn-default');
         await button.click();
         const result = await page.$eval('#display', el => el.innerHTML);
@@ -30,11 +30,24 @@ describe('Tugas akhir PPL tercinta :*', () => {
 
     test('3. Inputing multi input field and make "NaN" result', async () => {
         const a = "abc";
-        await page.type('#sum1', a, {delay:1});
-        await page.type('#sum2', a, {delay:1});
+        await page.type('#sum1', a);
+        await page.type('#sum2', a);
         const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(5) div.panel-body form:nth-child(3) > button.btn.btn-default:nth-child(3)');
         await button.click();
         const expected = "NaN";
+        const result = await page.$eval('#displayvalue', el => el.innerHTML);
+        expect(result).toBe(expected);
+    }, timeout);
+
+    test('4. Inputing number and see the result and compare it', async () =>{
+        await page.reload({waitUntil: "domcontentloaded"});
+        const number1 = 53;
+        const number2 = 50;
+        await page.type('#sum1', number1.toString());
+        await page.type('#sum2', number2.toString());
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(5) div.panel-body form:nth-child(3) > button.btn.btn-default:nth-child(3)');
+        await button.click();
+        const expected = (number1+number2).toString();
         const result = await page.$eval('#displayvalue', el => el.innerHTML);
         expect(result).toBe(expected);
     }, timeout);
