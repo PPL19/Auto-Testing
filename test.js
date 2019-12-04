@@ -51,4 +51,14 @@ describe('Tugas akhir PPL tercinta :*', () => {
         const result = await page.$eval('#displayvalue', el => el.innerHTML);
         expect(result).toBe(expected);
     }, timeout);
+
+    test('5. Progress Bars and Slider testing', async () => {
+        const progress = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) > li.tree-branch:nth-child(4)');
+        await progress.click();
+        const slider = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(4) ul:nth-child(3) li:nth-child(3) > a:nth-child(1)');
+        await slider.click();
+        await page.waitForNavigation({waitUntil: "domcontentloaded"});
+        const title = await page.title();
+        expect(title).toBe('Selenium Easy - Drag and Drop Range Sliders');
+    });
 });
