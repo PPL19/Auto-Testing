@@ -7,6 +7,23 @@ beforeAll(async () => {
 
 describe('Tugas akhir PPL tercinta :*', () => {
 
+    test('7. Inputing many field and comparing the result', async () => {
+        const inputer = "testt";
+        const inputer1 = "085250036556";
+        const rad = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left section.content:nth-child(2) form.well.form-horizontal div.form-group:nth-child(11) div.col-md-4:nth-child(2) div.radio:nth-child(1) label:nth-child(1) > input:nth-child(1)');
+        // await page.waitForSelector("#get-input");
+        await page.type('input[name=first_name]', inputer)
+        await page.type('input[name=last_name]', inputer)
+        await page.type('input[name=email]', inputer)
+        await page.type('input[name=phone]', inputer1)
+        await page.type('input[name=address]', inputer)
+        await page.type('input[name=city]', inputer)
+        await page.type('input[name=zip]', inputer)
+        await page.type('input[name=website]', inputer)
+        await rad.click();
+        await page.type('textarea[name=comment]', inputer)
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left section.content:nth-child(2) form.well.form-horizontal fieldset:nth-child(1) div.form-group:nth-child(14) div.col-md-4:nth-child(2) > button.btn.btn-default');
+      
     test('1. Click simple form demo drop down and redirected to https://www.seleniumeasy.com/test/basic-first-form-demo.html ', async () => {
         var inputElement = await page.$('div.container-fluid:nth-child(1) div.row:nth-child(2) nav.navbar.navbar-default div.container div.collapse.navbar-collapse ul.nav.navbar-nav:nth-child(1) li.dropdown:nth-child(1) > a.dropdown-toggle');
         await inputElement.click();
@@ -47,9 +64,9 @@ describe('Tugas akhir PPL tercinta :*', () => {
         await page.type('#sum2', number2.toString());
         const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(5) div.panel-body form:nth-child(3) > button.btn.btn-default:nth-child(3)');
         await button.click();
-        const expected = (number1+number2).toString();
-        const result = await page.$eval('#displayvalue', el => el.innerHTML);
-        expect(result).toBe(expected);
+        // const result = await page.$eval('#display', el => el.innerHTML);
+        // expect(result).toBe(inputer);
+        
     }, timeout);
 
     test('5. Progress Bars and Slider testing', async () => {
@@ -93,4 +110,5 @@ describe('Tugas akhir PPL tercinta :*', () => {
         const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body p:nth-child(6)> button.btn.btn-default');
         await button.click();
     }, timeout);
+
 });
