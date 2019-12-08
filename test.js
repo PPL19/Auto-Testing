@@ -77,4 +77,36 @@ describe('Tugas akhir PPL tercinta :*', () => {
         await page.waitForNavigation({waitUntil: "domcontentloaded"});
         
     },timeout);
+
+    test('8. Go To Radio Button Form', async () => {
+        const input = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) > li.tree-branch:nth-child(1)');
+        await input.click();
+        const radio = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(1) ul:nth-child(3) li:nth-child(3) > a:nth-child(1)');
+        await radio.click();
+        await page.waitForNavigation({waitUntil: "domcontentloaded"});
+        const title = await page.title();
+        expect(title).toBe('Selenium Easy Demo - Radio buttons demo for Automation');
+    }, timeout);
+
+    test('9. radio button testing "Male"', async () => {
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body p:nth-child(6)> button.btn.btn-default');
+        await button.click();
+        const result = await page.$eval('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body > p.radiobutton:nth-child(7)', el => el.innerHTML);
+        const resultTo = "Radio button 'Male' is checked";
+        expect(result).toBe(resultTo);
+    }, timeout);
+
+    test('10. radio button testing "Female"', async () => {
+        await page.reload({waitUntil: "domcontentloaded"});
+        const rad = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body label:nth-child(3)> input');
+        await rad.click();
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body p:nth-child(6)> button.btn.btn-default');
+        await button.click();
+    }, timeout);
+
+    test('11. radio button testing Not Tested', async () => {
+        await page.reload({waitUntil: "domcontentloaded"});
+        const button = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(4) div.panel-body p:nth-child(6)> button.btn.btn-default');
+        await button.click();
+    }, timeout);
 });
