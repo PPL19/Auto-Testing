@@ -75,7 +75,17 @@ describe('Tugas akhir PPL tercinta :*', () => {
         const target = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(7) ul:nth-child(3) li:nth-child(1) > a:nth-child(1)');
         await target.click();
         await page.waitForNavigation({waitUntil: "domcontentloaded"});
-        
+        await page.setViewport({ width: 1344, height: 740 });
+        const dragBox = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) div.panel.panel-default:nth-child(2) div.panel-body div.w25.moveleft:nth-child(1) > span:nth-child(2)');
+        const position = await dragBox.boundingBox();
+        const dropBox = await page.$('#mydropzone');
+        const endPoint = await dropBox.boundingBox();
+        await page.mouse.move(position.x + position.width / 2, position.y + position.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(endPoint.x + endPoint.width / 2, endPoint.y + endPoint.height / 2);
+        await page.mouse.up();
+        const result = page.$eval('#droppedlist', el => el.innerHTML);
+        expect(result).toMatch('Draggable');
     },timeout);
 
     test('8. Go To Radio Button Form', async () => {
