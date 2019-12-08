@@ -69,7 +69,12 @@ describe('Tugas akhir PPL tercinta :*', () => {
         expect(result).toBe('33');
     },timeout);
 
-    // test('6. Inputing into form test', async () => {
-
-    // },timeout);
+    test('6. Inputing into form test', async () => {
+        const nextTest = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(7) > a:nth-child(2)');
+        await nextTest.click();
+        const target = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(7) ul:nth-child(3) li:nth-child(1) > a:nth-child(1)');
+        await target.click();
+        await page.waitForNavigation({waitUntil: "domcontentloaded"});
+        
+    },timeout);
 });
