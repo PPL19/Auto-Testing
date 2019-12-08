@@ -55,10 +55,21 @@ describe('Tugas akhir PPL tercinta :*', () => {
     test('5. Progress Bars and Slider testing', async () => {
         const progress = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) > li.tree-branch:nth-child(4)');
         await progress.click();
-        const slider = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(4) ul:nth-child(3) li:nth-child(3) > a:nth-child(1)');
-        await slider.click();
+        const sliderLink = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-3.sidenav:nth-child(1) div.panel.panel-default div.panel-body ul.treeview.treeview-tree li.tree-branch ul:nth-child(3) li.tree-branch:nth-child(4) ul:nth-child(3) li:nth-child(3) > a:nth-child(1)');
+        await sliderLink.click();
         await page.waitForNavigation({waitUntil: "domcontentloaded"});
-        const title = await page.title();
-        expect(title).toBe('Selenium Easy - Drag and Drop Range Sliders');
-    });
+        await page.setViewport({ width: 1340, height: 740 });
+        let sliderElement = await page.$('div.container-fluid.text-center:nth-child(2) div.row div.col-md-6.text-left:nth-child(2) section.content:nth-child(2) div.row.sliders:nth-child(2) div.col-md-6:nth-child(1) div.range:nth-child(2) > input:nth-child(1)');
+        let sliderBoundaryBox = await sliderElement.boundingBox();
+        await page.mouse.move(sliderBoundaryBox.x + sliderBoundaryBox.width / 2, sliderBoundaryBox.y + sliderBoundaryBox.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(sliderBoundaryBox.x + sliderBoundaryBox.width / 3 ,sliderBoundaryBox.y+sliderBoundaryBox.height/2,{ steps: 15 });
+        await page.mouse.up();
+        const result = await page.$eval('#range', el => el.innerHTML);
+        expect(result).toBe('33');
+    },timeout);
+
+    // test('6. Inputing into form test', async () => {
+
+    // },timeout);
 });
